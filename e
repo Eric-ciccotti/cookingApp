@@ -1,0 +1,29 @@
+[33mcommit 722ead34cc34f01c22d0c8c092f322a264febc29[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Eric <35898232+Eric-ciccotti@users.noreply.github.com>
+Date:   Fri Aug 30 14:57:01 2019 +0200
+
+    ajout des routes
+
+[33mcommit b09f51e5a2624876b92f9f07f3b1962d71a5c3d1[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Eric <35898232+Eric-ciccotti@users.noreply.github.com>
+Date:   Tue Aug 6 13:46:36 2019 +0200
+
+    ajout de la possibilitée d'envoyer la liste d'ingredient du component recipe au component shopping list
+
+[33mcommit 00939f86e93f8e6aa9b37f3580094acb3c644a12[m
+Author: Eric <35898232+Eric-ciccotti@users.noreply.github.com>
+Date:   Sun Aug 4 03:33:22 2019 +0200
+
+    ajout de service dans le component recipe-detail
+
+[33mcommit d49ac1a4b77b3dd952519ee01d72377aa70e4609[m
+Author: Eric <35898232+Eric-ciccotti@users.noreply.github.com>
+Date:   Sun Aug 4 03:02:21 2019 +0200
+
+    version initial du projet
+
+[33mcommit 7bf5c5b326e5036fabf1fb31a0e01a1e14b353c2[m
+Author: Eric <35898232+Eric-ciccotti@users.noreply.github.com>
+Date:   Sat Jun 8 17:52:05 2019 +0200
+
+    initial commit
