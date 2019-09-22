@@ -19,9 +19,7 @@ export class DropdownDirective {
   // fonctionne mais ne gere pas la fermeture du menu déroulant
 
   @HostListener("document:click", ["$event"]) toggleOpen(event: Event) {
-    this.isOpen = this.elRef.nativeElement.contains(event.target)
-      ? !this.isOpen
-      : false;
+    this.isOpen = this.elRef.nativeElement.contains(event.target) ? !this.isOpen : false;
   }
   // si on click n'importe ou sur le document et que ce click ne contient pas
   // l'élement

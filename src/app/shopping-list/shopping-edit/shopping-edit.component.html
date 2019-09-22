@@ -1,6 +1,7 @@
+<!-- TEMPLATE DRIVEN FORM APPROCH -->
 <div class="row">
   <div class="col-xs-12">
-    <form action="">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
       <div class="row">
         <div class="col-sm-5 form-group">
           <label for="name">Name</label>
@@ -8,7 +9,9 @@
             type="text"
             id="name"
             class="form-control"
-            #nameInput
+            name="name"
+            ngModel
+            required
           >
         </div>
         <div class="col-sm-2 form-group">
@@ -17,15 +20,21 @@
             type="number"
             id="amount"
             class="form-control"
-            #amountInput
+            name="amount"
+            ngModel
+            required
+            pattern="^[1-9]+[0-9]*$"
+            min="0"
           >
+          <!-- le pattern verifie une expression régulière contre les nombres negatifs
+          min n'empeche pas cela mais permet de démarrer à zero -->
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <button type="submit" class="btn btn-success" (click)="onAdd(nameInput)">Add</button>
-          <button type="button" class="btn btn-danger">Delete</button>
-          <button type="button" class="btn btn-primary">Clear</button>
+          <button type="submit" class="btn btn-success" [disabled]="!f.valid">{{ editMode ? 'Update' : 'Add' }}</button>
+          <button *ngIf="editMode" type="button" class="btn btn-danger" (click)="onDelete()">Delete</button>
+          <button type="button" class="btn btn-primary" (click)="onClear()">Clear</button>
         </div>
       </div>
     </form>

@@ -1,40 +1,31 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { RecipesComponent } from './recipes/recipes.component';
-import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
-import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
-import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
+import { HttpClientModule } from "@angular/common/http";
 
-import { DropdownDirective } from "./shared/DropdownDirective";
+import { AppComponent } from "./app.component";
+import { HeaderComponent } from "./header/header.component";
 
-import { ShoppingListService } from "./shopping-list/shopping-list.service";
-
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from "./app-routing.module";
+import { ShoppingListModule } from './shopping-list/shopping-list.module';
+import { SharedModules } from './shared/shared.modules';
+import { CoreModule } from './core.module';
+import { AuthModule } from './auth/auth.module';
+import { LoggingService } from './logging.service';
 
 @NgModule({
-  declarations: [
+  declarations: [ // composant , directive, service
     AppComponent,
     HeaderComponent,
-    RecipesComponent,
-    RecipeListComponent,
-    RecipeDetailComponent,
-    RecipeItemComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
-    DropdownDirective
   ],
-  imports: [
+  imports: [  // module suplémentaire que je veux importer
     BrowserModule,
-    FormsModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    SharedModules,
+    CoreModule
   ],
-  providers: [ShoppingListService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  // providers: [LoggingService]
 })
-export class AppModule { }
+export class AppModule {}

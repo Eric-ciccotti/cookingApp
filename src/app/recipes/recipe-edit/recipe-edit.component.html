@@ -1,0 +1,105 @@
+<!-- REACTIVE FORM APPROCH -->
+<div class="row">
+    <div class="col-xs-12">
+      <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-xs-12">
+            <button type="submit" class="btn btn-success" [disabled]="!this.recipeForm.valid">Save</button>
+            <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                formControlName="name"
+                class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="imagePath">Image URL</label>
+              <input
+                type="text"
+                id="imagePath"
+                formControlName="imagePath"
+                class="form-control"
+                #imagePath>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <img
+              [src]="imagePath.value"
+              class="img-responsive">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea
+                id="description"
+                class="form-control"
+                formControlName="description"
+                rows="6"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+
+          <!-- on  associe un controle sur le tableau de controle 'ingredients' qui correspond à 'recipeIngredient' -->
+          <div class="col-xs-12" formArrayName="ingredients">
+
+            <div
+              style="margin-top: 10px;"
+              class="row"
+              *ngFor="let ingredient of getIngredientsCtrl(); let i = index"
+              [formGroupName]="i">
+              <!-- on va generer un group avec chaque fois une div name, une div amount et un bouton -->
+
+              <!-- NAME -->
+              <div class="col-xs-8">
+                <input
+                    type="text"
+                    formControlName="name"
+                    class="form-control">
+              </div>
+
+              <!-- AMOUNT -->
+              <div class="col-xs-2">
+                <input
+                    type="number"
+                    formControlName="amount"
+                    class="form-control">
+              </div>
+              <!-- UN BOUTON -->
+              <div class="col-xs-2">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="onDeleteIngredient(i)">X</button>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+              <div class="col-xs-12">
+                <button type="button" class="btn btn-success" (click)="onAddIngredient()">Add ingredient</button>
+                <!-- type=button pour eviter d'envoyer le formulaire -->
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>

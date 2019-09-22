@@ -1,9 +1,9 @@
 <a
-[routerLink]="['/id', recipe.id]"
+[routerLink]=[index]
+routerLinkActive="active"
 style="cursor: pointer;"
 class="list-group-item clearfix">
     <div class="pull-left">
-      <p>COOL</p>
       <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
       <p class="list-group-item-text">{{ recipe.description }}</p>
     </div>
@@ -12,4 +12,4 @@ class="list-group-item clearfix">
     </span>
   </a>
 
-  <!-- (click)="onSelectedItem()" -->
+  <!-- (click)="onNaviguate(index)" -->
