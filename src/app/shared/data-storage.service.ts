@@ -31,20 +31,10 @@ export class DataStorageService {
         ).pipe(
       map(recipes => {
         if (recipes === null) {
-          console.log('ya pas de recette')
-          // const newrecet: Recipe[] = [
-          //   new Recipe(
-          //     "Coco chiken",
-          //     "Very tasty chiken coco recipe",
-          //     "https://assets.afcdn.com/recipe/20161128/60272_w600.jpg",
-          //     []
-          //   )]
-          return this.recipeService.getDummyRecipes()
-        } else {
-          console.log(' il y a des recette !')
+          console.log('pas de recette')
+          return this.recipeService.getDummyRecipes();
+          // on récupère des recettes de base si jamais on supprime/sauvegarde , un array de recette vide
         }
-
-
         console.log('log de recipe au fetch:', recipes);
 
         return recipes.map(recipe => {
@@ -59,7 +49,6 @@ export class DataStorageService {
         // if (recipes.length === 0) {
         //   this.recipeService.setRecipe(this.recipeService.getDummyRecipes())
         // }
-
         this.recipeService.setRecipe(recipes);
       }) //le tap operator permet de faire des operations sans modifier les données acheminées à travers l'observable.);
     );

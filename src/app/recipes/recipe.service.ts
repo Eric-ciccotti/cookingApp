@@ -4,8 +4,7 @@ import { Recipe } from "./recipe.model";
 import { Ingredient } from "../shared/ingredient.model";
 
 import { ShoppingListService } from "../shopping-list/shopping-list.service";
-import { Subject } from 'rxjs';
-
+import { Subject, BehaviorSubject } from "rxjs";
 
 @Injectable()
 export class RecipeService {
@@ -13,18 +12,26 @@ export class RecipeService {
 
   private dummyRecipe: Recipe[] = [
     new Recipe(
-      "Coco chiken",
-      "Very tasty chiken coco recipe",
-      "https://assets.afcdn.com/recipe/20161128/60272_w600.jpg",
-      [new Ingredient("filet de poulet", 2), new Ingredient("lait de coco", 1)]
+      "Cheese burger",
+      "This recipe for the BEST Cheeseburger ever is so freaking delicious",
+      "https://upload.wikimedia.org/wikipedia/commons/4/4d/Cheeseburger.jpg",
+      [
+        new Ingredient("fresh chopped steak", 2),
+        new Ingredient("salad leaf", 2),
+        new Ingredient("tomatoes", 1),
+        new Ingredient("onions slices", 4),
+        new Ingredient("onions slices", 4)
+      ]
     ),
     new Recipe(
-      "Steak frites",
-      "Un savoureux steak avec des frites croustilante",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Sirloin_steak_with_garlic_butter_and_french_fries_cropped.jpg/440px-Sirloin_steak_with_garlic_butter_and_french_fries_cropped.jpg",
+      "Apple pie",
+      "A slice of this homemade apple pie will make you feel happy!",
+     "https://www.sccpre.cat/mypng/detail/211-2111827_pastry-drawing-lattice-pie-apple-pie.png",
       [
-        new Ingredient("Frittes de pomme de terre", 1),
-        new Ingredient("steak haché", 1)
+        new Ingredient("Green pie", 2),
+        new Ingredient("Sugar tablespoon", 4),
+        new Ingredient("tablespoons all-purpose flour", 10),
+        new Ingredient("large egg white", 1),
       ]
     )
   ];
@@ -38,7 +45,7 @@ export class RecipeService {
   }
 
   getDummyRecipes() {
-    return this.dummyRecipe.slice()
+    return this.dummyRecipe.slice();
   }
 
   getRecipeById(index: number) {
