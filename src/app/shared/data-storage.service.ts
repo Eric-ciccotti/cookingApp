@@ -4,6 +4,7 @@ import { RecipeService } from "../recipes/recipe.service";
 import { Recipe } from "../recipes/recipe.model";
 import { map, tap, take, exhaustMap } from "rxjs/operators";
 import { AuthService } from "../auth/auth.service";
+import { log } from 'util';
 
 @Injectable({
   providedIn: "root"
@@ -25,11 +26,27 @@ export class DataStorageService {
   }
 
   fetchRecipes() {
-
         return this.http.get<Recipe[]>(
           "https://ng-cooking-app-5dc2a.firebaseio.com/recipe.json"
         ).pipe(
       map(recipes => {
+        if (recipes === null) {
+          console.log('ya pas de recette')
+          // const newrecet: Recipe[] = [
+          //   new Recipe(
+          //     "Coco chiken",
+          //     "Very tasty chiken coco recipe",
+          //     "https://assets.afcdn.com/recipe/20161128/60272_w600.jpg",
+          //     []
+          //   )]
+          return this.recipeService.getDummyRecipes()
+        } else {
+          console.log(' il y a des recette !')
+        }
+
+
+        console.log('log de recipe au fetch:', recipes);
+
         return recipes.map(recipe => {
           return {
             ...recipe,
@@ -38,6 +55,11 @@ export class DataStorageService {
         });
       }),
       tap(recipes => {
+
+        // if (recipes.length === 0) {
+        //   this.recipeService.setRecipe(this.recipeService.getDummyRecipes())
+        // }
+
         this.recipeService.setRecipe(recipes);
       }) //le tap operator permet de faire des operations sans modifier les données acheminées à travers l'observable.);
     );
